@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // PALETTE
-class ColorScheme {
+class AsanColorScheme {
   // main colors
   static const Color primary = Color(0xFF28B873);
   static const Color secondary = Color(0xFF1B0808);
   static const Color surface = Color(0xFFFFFFFF);
   static const Color error = Color(0xFFEE0000);
   static const Color container = Color(0xFFF0F0F0);
+  static const Color inactive = Color(0xFF999999);
   // on colors
   static const Color onPrimary = Color(0xFF1B0808);
   static const Color onSecondary = Color(0xFFFFFFFF);
@@ -24,7 +25,7 @@ class ColorScheme {
 }
 
 // TYPE SCALE
-class TextTheme {
+class AsanTextTheme {
   // heading
   static final TextStyle headlineSmall = GoogleFonts.bricolageGrotesque(
     textStyle: const TextStyle(

@@ -4,24 +4,30 @@
 // You are not required to write more of these, but a project with a few real
 // tests reads very differently from one with none.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:final_project/main.dart';
+import 'package:asan/main.dart';
 
 void main() {
-  testWidgets('home screen shows its title and counts taps', (tester) async {
-    // Build the app. Note we build MyApp directly, not the DevicePreview
-    // wrapper, because a test does not need the phone frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('bottom navigation switches between screens', (tester) async {
+    await tester.pumpWidget(const Asan());
 
-    expect(find.text('It works'), findsOneWidget);
-    expect(find.text('Taps: 0'), findsOneWidget);
+    expect(find.text('Pantry'), findsOneWidget);
+    expect(find.text('Your pantry items'), findsOneWidget);
 
-    // Tap the button, then let the widget rebuild.
-    await tester.tap(find.byType(FilledButton));
+    await tester.tap(find.text('Recipes'));
     await tester.pump();
 
-    expect(find.text('Taps: 1'), findsOneWidget);
+    expect(find.text('Your recipes'), findsOneWidget);
+
+    await tester.tap(find.text('Meals'));
+    await tester.pump();
+
+    expect(find.text('Your meal plan'), findsOneWidget);
+
+    await tester.tap(find.text('Groceries'));
+    await tester.pump();
+
+    expect(find.text('Your grocery list'), findsOneWidget);
   });
 }
