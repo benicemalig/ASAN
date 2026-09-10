@@ -10,6 +10,7 @@ class AsanColorScheme {
   static const Color error = Color(0xFFEE0000);
   static const Color container = Color(0xFFF0F0F0);
   static const Color inactive = Color(0xFF999999);
+  static const Color shadow = Color(0x40000000);
   // on colors
   static const Color onPrimary = Color(0xFF1B0808);
   static const Color onSecondary = Color(0xFFFFFFFF);

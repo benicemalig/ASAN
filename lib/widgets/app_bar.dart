@@ -6,6 +6,7 @@ class AsanAppBar extends StatelessWidget implements PreferredSizeWidget {
   final IconData? icon;
   final VoidCallback? onIconPressed;
   final double actionRightPadding;
+  final PreferredSizeWidget? bottom;
 
   const AsanAppBar(
     {
@@ -13,7 +14,8 @@ class AsanAppBar extends StatelessWidget implements PreferredSizeWidget {
       required this.screenTitle,
         this.icon,
       this.onIconPressed,
-      this.actionRightPadding = AsanSpacing.md,
+      this.actionRightPadding = AsanSpacing.lg,
+      this.bottom,
     }
   );
 
@@ -29,17 +31,28 @@ class AsanAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         centerTitle: false,
         titleSpacing: 0,
+        elevation: 0,
+        scrolledUnderElevation: 4,
+        shadowColor: AsanColorScheme.shadow,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(16),
+          ),
+        ),
+        clipBehavior: Clip.antiAlias,
         title: Text(
           screenTitle,
           style: AsanTextTheme.headlineSmall,
         ),
+        bottom: bottom,
           actions: icon == null
               ? null
               : [
                   IconButton(
-                    constraints: const BoxConstraints(
-                      minWidth: kMinInteractiveDimension,
-                      minHeight: kMinInteractiveDimension,
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints.tightFor(
+                      width: 34,
+                      height: 34,
                     ),
                     icon: Icon(
                       icon,
@@ -54,7 +67,9 @@ class AsanAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(
-    kToolbarHeight + (AsanSpacing.md * 2),
+  Size get preferredSize => Size.fromHeight(
+    kToolbarHeight +
+        (AsanSpacing.md * 2) +
+        (bottom?.preferredSize.height ?? 0),
   );
 }

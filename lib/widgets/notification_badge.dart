@@ -16,8 +16,8 @@ class NotificationBadge extends StatelessWidget {
     }
 
     return Container(
-      width: 13,
-      height: 13,
+      width: 14,
+      height: 14,
       decoration: const BoxDecoration(
         color: AsanColorScheme.error,
         shape: BoxShape.circle,

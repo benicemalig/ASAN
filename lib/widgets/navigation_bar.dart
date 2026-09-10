@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:asan/theme.dart';
 import 'package:asan/widgets/notification_badge.dart';
 import 'package:asan/widgets/standard_icon_button.dart';
@@ -27,7 +27,7 @@ class AsanNavigationBar extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black26,
+            color: AsanColorScheme.shadow,
             blurRadius: 4,
           ),
         ],
@@ -37,8 +37,7 @@ class AsanNavigationBar extends StatelessWidget {
           Expanded(
             child: _NavigationItem(
               label: 'Recipes',
-              icon: Icons.import_contacts_outlined,
-              activeIcon: Icons.import_contacts_rounded,
+              icon: Symbols.menu_book_rounded,
               isSelected: selectedIndex == 0,
               onPressed: () => onDestinationSelected(0),
             ),
@@ -46,8 +45,7 @@ class AsanNavigationBar extends StatelessWidget {
           Expanded(
             child: _NavigationItem(
               label: 'Meals',
-              icon: Icons.calendar_today_outlined,
-              activeIcon: Icons.calendar_today_rounded,
+              icon: Symbols.calendar_today_rounded,
               isSelected: selectedIndex == 1,
               onPressed: () => onDestinationSelected(1),
             ),
@@ -55,8 +53,7 @@ class AsanNavigationBar extends StatelessWidget {
           Expanded(
             child: _NavigationItem(
               label: 'Pantry',
-              icon: Icons.inventory_2_outlined,
-              activeIcon: Icons.inventory_2_rounded,
+              icon: Symbols.inventory_2_rounded,
               isSelected: selectedIndex == 2,
               onPressed: () => onDestinationSelected(2),
             ),
@@ -64,8 +61,7 @@ class AsanNavigationBar extends StatelessWidget {
           Expanded(
             child: _NavigationItem(
               label: 'Groceries',
-              icon: Icons.shopping_cart_outlined,
-              activeIcon: Icons.shopping_cart_rounded,
+              icon: Symbols.shopping_cart_rounded,
               isSelected: selectedIndex == 3,
               badgeCount: groceriesBadgeCount,
               onPressed: () => onDestinationSelected(3),
@@ -80,7 +76,6 @@ class AsanNavigationBar extends StatelessWidget {
 class _NavigationItem extends StatelessWidget {
   final String label;
   final IconData icon;
-  final IconData activeIcon;
   final bool isSelected;
   final int badgeCount;
   final VoidCallback onPressed;
@@ -88,7 +83,6 @@ class _NavigationItem extends StatelessWidget {
   const _NavigationItem({
     required this.label,
     required this.icon,
-    required this.activeIcon,
     required this.isSelected,
     required this.onPressed,
     this.badgeCount = 0,
@@ -96,6 +90,10 @@ class _NavigationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = isSelected
+        ? AsanColorScheme.primary
+        : AsanColorScheme.inactive;
+
     return InkWell(
       onTap: onPressed,
       child: Column(
@@ -106,7 +104,6 @@ class _NavigationItem extends StatelessWidget {
             children: [
               StandardIconButton(
                 icon: icon,
-                activeIcon: activeIcon,
                 isActive: isSelected,
               ),
               if (badgeCount > 0)
@@ -123,9 +120,7 @@ class _NavigationItem extends StatelessWidget {
           Text(
             label,
             style: AsanTextTheme.labelSmall.copyWith(
-              color: isSelected
-                  ? AsanColorScheme.primary
-                  : AsanColorScheme.inactive,
+              color: color,
               fontWeight: FontWeight.bold,
             ),
           ),

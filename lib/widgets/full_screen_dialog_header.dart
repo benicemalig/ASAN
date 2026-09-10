@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:asan/theme.dart';
 
 class FullScreenDialogHeader extends StatelessWidget
@@ -16,28 +15,24 @@ class FullScreenDialogHeader extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: AsanSpacing.md,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: AsanSpacing.md),
       child: SizedBox(
         width: double.infinity,
-        height: kToolbarHeight,
+        height: 34,
         child: Stack(
           alignment: Alignment.center,
           children: [
             Positioned(
-              left: AsanSpacing.sm,
+              left: AsanSpacing.md,
               child: IconButton(
                 padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(
-                  minWidth: kMinInteractiveDimension,
-                  minHeight: kMinInteractiveDimension,
+                constraints: const BoxConstraints.tightFor(
+                  width: 34,
+                  height: 34,
                 ),
-                icon: const Icon(
-                  Icons.chevron_left_rounded,
-                  size: 38,
-                ),
-                onPressed: onBackPressed ??
+                icon: const Icon(Icons.chevron_left_rounded, size: 34),
+                onPressed:
+                    onBackPressed ??
                     () {
                       Navigator.pop(context);
                     },
@@ -57,7 +52,5 @@ class FullScreenDialogHeader extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(
-        kToolbarHeight + (AsanSpacing.md * 2),
-      );
+  Size get preferredSize => const Size.fromHeight(34 + (AsanSpacing.md * 2));
 }

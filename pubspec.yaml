@@ -12,7 +12,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.9
+  material_symbols_icons: ^4.2960.0
   google_fonts: ^6.2.1
   # Lets you preview the app inside a phone frame while you develop in a
   # browser. It is switched off automatically in a release build.

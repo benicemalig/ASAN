@@ -24,7 +24,7 @@ class Asan extends StatefulWidget {
 }
 
 class _AsanState extends State<Asan> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
