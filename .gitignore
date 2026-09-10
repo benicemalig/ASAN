@@ -28,3 +28,6 @@ Thumbs.db
 .idea/
 .vscode/*
 !.vscode/launch.json
+
+# Notes
+notes.md
